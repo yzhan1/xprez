@@ -73,7 +73,6 @@ To start `app`, run `node ./src/config`
         ├── prod.js
         ├── index.js      ------> App's entry point
         ├── routes.js  
-    ├── routes.js    
     └── services
         └── userService.js
     └── views
