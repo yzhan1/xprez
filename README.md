@@ -29,16 +29,12 @@ module.exports = {
 
 // src/controllers/user.js
 class UserController {
-  constructor(app) {
-    this.app = app;
-  }
-
-  show(req, res) {
+  static show(req, res) {
     // access config
-    dbUrl = this.app.config.dev.databaseUrl;
+    const dbUrl = req.config.dev.databaseUrl;
     // access service
     const user = req.services.userService.getUser(req.params.id);
-    res.send(JSON.parse(user));
+    res.send(dbUrl + '' + user);
   }
 }
 
@@ -47,12 +43,14 @@ module.exports = UserController;
 // src/services/userService.js
 class UserService {
   constructor() {
+    this.count = 1;
   }
 
   getUser(id) {
-    // fetch from db
+    return `user ${id}, ${this.count++}`;
   }
 }
+
 
 module.exports = UserService;
 ```
@@ -75,6 +73,4 @@ To start `app`, run `node ./src/config`
         ├── routes.js  
     └── services
         └── userService.js
-    └── views
-        └── index.ejs
 ```
