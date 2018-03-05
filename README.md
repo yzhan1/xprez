@@ -4,6 +4,10 @@
 
 A minimal web framework (built on top of Express.js) that separates router, controllers and services.
 
+[GitHub](https://github.com/yzhan1/xprez)
+
+** Forking and PR's are welcome **
+
 To install, run `npm i xprez --save`
 
 ```javascript
@@ -74,3 +78,7 @@ To start `app`, run `node ./src/config`
     └── services
         └── userService.js
 ```
+
+### Todos
+
+- [] Unit tests
