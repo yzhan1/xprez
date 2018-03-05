@@ -1,6 +1,6 @@
 # Xprez
 
-[![npm version](https://badge.fury.io/js/xprez.svg)](https://badge.fury.io/js/xprez) [![Maintainability](https://api.codeclimate.com/v1/badges/18a4dfac6bbc30040e34/maintainability)](https://codeclimate.com/github/yzhan1/xprez/maintainability)
+[![npm version](https://badge.fury.io/js/xprez.svg)](https://badge.fury.io/js/xprez) [![Maintainability](https://api.codeclimate.com/v1/badges/18a4dfac6bbc30040e34/maintainability)](https://codeclimate.com/github/yzhan1/xprez/maintainability) ![npm downloads](https://img.shields.io/npm/dt/xprez.svg)
 
 A minimal web framework (built on top of Express.js) that separates router, controllers and services.
 
@@ -81,4 +81,4 @@ To start `app`, run `node ./src/config`
 
 ### Todos
 
-- [] Unit tests
+- [ ] Unit tests
