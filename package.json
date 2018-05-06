@@ -1,6 +1,6 @@
 {
   "name": "xprez",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "A minimal web framework (built on top of Express.js) that separates router, controllers and services.",
   "main": "index.js",
   "scripts": {
@@ -19,9 +19,13 @@
   },
   "keywords": [
     "express",
+    "mvc",
+    "model-view-controller",
     "web-service",
     "service",
     "web-framework",
+    "framework",
+    "backend-framework",
     "backend"
   ],
   "devDependencies": {
