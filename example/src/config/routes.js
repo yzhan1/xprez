@@ -1,5 +1,5 @@
 module.exports = (app) => {
   return {
-    'get /users/:id': app.controllers.user.show
+    'get /users/:id': (...args) => app.controllers.user.show(...args)
   };
 };

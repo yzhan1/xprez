@@ -1,67 +1,72 @@
 # Xprez
 
-[![npm version](https://badge.fury.io/js/xprez.svg)](https://badge.fury.io/js/xprez) [![Maintainability](https://api.codeclimate.com/v1/badges/18a4dfac6bbc30040e34/maintainability)](https://codeclimate.com/github/yzhan1/xprez/maintainability) ![npm downloads](https://img.shields.io/npm/dt/xprez.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/18a4dfac6bbc30040e34/maintainability)](https://codeclimate.com/github/yzhan1/xprez/maintainability) [![npm version](https://badge.fury.io/js/xprez.svg)](https://badge.fury.io/js/xprez) [npm downloads](https://img.shields.io/npm/dt/xprez.svg)
 
-A minimal web framework (built on top of Express.js) that separates router, controllers and services.
-
-[GitHub](https://github.com/yzhan1/xprez)
-
-** Forking and PR's are welcome **
+A minimal web framework (built on top of Express.js) that separates router, controllers and services. Inspired by Egg.js
 
 To install, run `npm i xprez --save`
 
 ```javascript
 // src/config/index.js
-const xprez = require('xprez');
+const xprez = require('xprez').Xprez;
 
-const app = new xprez();
+const app = new xprez(__dirname);
 
 app.listen(3000);
 
 // src/config/routes.js
 module.exports = (app) => {
   return {
-    'get /users/:id': app.controllers.user.show,
-    'post /users/new': app.controllers.user.new
+    'get /users/:id': (...args) => app.controllers.user.show(...args),
+    'post /users': (...args) => app.controllers.user.new(...args),
   };
 };
 
 // src/config/dev.js
 module.exports = {
-  'databaseUrl': 'localhost:12345'
+  REDIS_URL: 'redis://localhost:6379',
+  LANG: 'English'
 }
 
 // src/controllers/user.js
-class UserController {
-  static show(req, res) {
+const Controller = require('xprez').modules.Controller;
+
+class UserController extends Controller {
+  constructor(props) {
+    super(props);
+  }
+
+  show(req, res) {
     // access config
-    const dbUrl = req.config.dev.databaseUrl;
+    const redis = this.config.dev.REDIS_URL;
     // access service
-    const user = req.services.userService.getUser(req.params.id);
-    res.send(dbUrl + '' + user);
+    const user = this.services.user.getUser(req.params.id);
+    
+    res.render('user', {message: `Redis URL: ${redis} . User ID: ${user}`});
   }
 }
 
 module.exports = UserController;
 
 // src/services/userService.js
-class UserService {
-  constructor() {
-    this.count = 1;
+const Service = require('xprez').modules.Service;
+
+class UserService extends Service {
+  constructor(props) {
+    super(props);
   }
 
   getUser(id) {
-    return `user ${id}, ${this.count++}`;
+    return `${this.config.dev.LANG} user ${id}`;
   }
 }
-
 
 module.exports = UserService;
 ```
 
 ### Required Folder Structure
 
-To start `app`, run `node ./src/config`
+To start `app`, run `node src/config`
 
 ```
 .
@@ -69,16 +74,14 @@ To start `app`, run `node ./src/config`
 ├── package.json
 └── src
     ├── controllers
-    │   └── user.js
+    │   └── user.controller.js
     └── config
         ├── dev.js
         ├── prod.js
         ├── index.js      ------> App's entry point
         ├── routes.js  
     └── services
-        └── userService.js
+        └── user.service.js
+    └── views
+        └── user.ejs
 ```
-
-### Todos
-
-- [ ] Unit tests

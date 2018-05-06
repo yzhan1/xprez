@@ -1,3 +1,4 @@
 module.exports = {
-  'databaseUrl': 'localhost:2345'
+  REDIS_URL: 'redis://localhost:6379',
+  LANG: 'English'
 }
