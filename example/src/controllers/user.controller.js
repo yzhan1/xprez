@@ -1,10 +1,6 @@
-const Controller = require('xprez').modules.Controller;
+const Controller = require('xprez').Controller;
 
 class UserController extends Controller {
-  constructor(props) {
-    super(props);
-  }
-
   show(req, res) {
     // access config
     const redis = this.config.dev.REDIS_URL;

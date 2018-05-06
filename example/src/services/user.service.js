@@ -1,10 +1,6 @@
-const Service = require('xprez').modules.Service;
+const Service = require('xprez').Service;
 
 class UserService extends Service {
-  constructor(props) {
-    super(props);
-  }
-
   getUser(id) {
     return `${this.config.dev.LANG} user ${id}`;
   }

@@ -27,16 +27,12 @@ module.exports = (app) => {
 module.exports = {
   REDIS_URL: 'redis://localhost:6379',
   LANG: 'English'
-}
+};
 
-// src/controllers/user.js
-const Controller = require('xprez').modules.Controller;
+// src/controllers/user.controller.js
+const Controller = require('xprez').Controller;
 
 class UserController extends Controller {
-  constructor(props) {
-    super(props);
-  }
-
   show(req, res) {
     // access config
     const redis = this.config.dev.REDIS_URL;
@@ -49,14 +45,10 @@ class UserController extends Controller {
 
 module.exports = UserController;
 
-// src/services/userService.js
-const Service = require('xprez').modules.Service;
+// src/services/user.service.js
+const Service = require('xprez').Service;
 
 class UserService extends Service {
-  constructor(props) {
-    super(props);
-  }
-
   getUser(id) {
     return `${this.config.dev.LANG} user ${id}`;
   }
