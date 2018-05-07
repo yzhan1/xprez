@@ -4,58 +4,11 @@
 
 A minimal web framework (built on top of Express.js) that separates router, controllers and services. Inspired by Egg.js.
 
-To install, run `npm i xprez --save`
+To install, run `npm i xprez --save`.
+To contribute, please first clone the repo, then run `npm install`.
 
 ### Example code
-```javascript
-// src/config/index.js
-const xprez = require('xprez').Xprez;
-
-const app = new xprez(__dirname);
-
-app.listen(3000);
-
-// src/config/routes.js
-module.exports = (app) => {
-  return {
-    'get /users/:id': (...args) => app.controllers.user.show(...args),
-    'post /users': (...args) => app.controllers.user.new(...args),
-  };
-};
-
-// src/config/dev.js
-module.exports = {
-  REDIS_URL: 'redis://localhost:6379',
-  LANG: 'English'
-};
-
-// src/controllers/user.controller.js
-const Controller = require('xprez').Controller;
-
-class UserController extends Controller {
-  show(req, res) {
-    // access config
-    const redis = this.config.dev.REDIS_URL;
-    // access service
-    const user = this.services.user.getUser(req.params.id);
-    
-    res.render('user', {message: `Redis URL: ${redis} . User ID: ${user}`});
-  }
-}
-
-module.exports = UserController;
-
-// src/services/user.service.js
-const Service = require('xprez').Service;
-
-class UserService extends Service {
-  getUser(id) {
-    return `${this.config.dev.LANG} user ${id}`;
-  }
-}
-
-module.exports = UserService;
-```
+![Example Code](./code.png)
 
 ### Required Folder Structure
 
@@ -66,13 +19,13 @@ To start app, run `node src/config`
 ├── package-lock.json
 ├── package.json
 └── src
-    ├── controllers
-    │   └── user.controller.js
     └── config
         ├── dev.js
         ├── prod.js
         ├── index.js      ------> App's entry point
         ├── routes.js  
+    ├── controllers
+        └── user.controller.js
     └── services
         └── user.service.js
     └── views
