@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.5.7",
-    "xprez": "^1.0.2"
+    "xprez": "^1.1.1"
   }
 }

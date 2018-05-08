@@ -7,6 +7,7 @@ class UserController extends Controller {
     // access service
     const user = this.services.user.getUser(req.params.id);
 
+    // access custom binds
     console.log(this.redis);
 
     res.render('user', {

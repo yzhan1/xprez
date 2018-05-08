@@ -8,6 +8,9 @@ To install, run `npm i xprez --save`.
 To contribute, please first clone the repo, then run `npm install`.
 
 ### Example code
+
+Sample directory is located in `./example`. 
+
 ![Example Code](./code.png)
 
 ### Required Folder Structure
