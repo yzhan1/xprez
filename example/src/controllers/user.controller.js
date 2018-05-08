@@ -1,4 +1,4 @@
-const Controller = require('xprez').Controller;
+const Controller = require('../../..').Controller;
 
 class UserController extends Controller {
   show(req, res) {

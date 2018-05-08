@@ -1,4 +1,4 @@
-const Service = require('xprez').Service;
+const Service = require('../../..').Service;
 
 class UserService extends Service {
   getUser(id) {
