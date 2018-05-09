@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ejs": "^2.5.7",
+    "ejs": "^2.6.1",
     "xprez": "^1.1.1"
   }
 }

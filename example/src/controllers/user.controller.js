@@ -1,4 +1,4 @@
-const Controller = require('../../..').Controller;
+const { Controller } = require('../../..');
 
 class UserController extends Controller {
   show(req, res) {
