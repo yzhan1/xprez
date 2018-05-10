@@ -4,11 +4,15 @@
 
 A minimal opinionated web framework (built on top of Express.js) that separates router, controllers and services. Heavily inspired by [Egg.js](https://github.com/eggjs/egg).
 
+### Getting Started
+
 + To install, run `npm i xprez --save`.
-+ To run the example, clone the repo, `cd example` and run `npm install`, then run `npm start`.
++ To run the example, either
+  + Clone the repo, `cd example` and run `npm install`, then run `npm start`.
+  + Or download the `./example` folder, change all `require('../../..')` to `require('xprez')`, and run `npm install` + `npm start`.
 + To contribute, please first clone the repo, then run `npm install`.
 
-### Example code
+### Example Code Snippet
 
 Sample directory is located in `./example`. 
 
@@ -16,7 +20,7 @@ Sample directory is located in `./example`.
 
 ### Required Folder Structure
 
-To start app, run `node src/config`
+To start app, run `node src/config`.
 
 ```
 .
