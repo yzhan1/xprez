@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "xprez-example",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ejs": "^2.6.1",
-    "xprez": "^1.1.1"
+    "xprez": "^1.2.0"
   }
 }
