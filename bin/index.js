@@ -3,7 +3,10 @@
 
 const program = require('commander');
 
-require('babel-register')({ presets: ['env'] });
+require('babel-register')({
+  presets: ['env'],
+  ignore: false
+});
 
 const serve = require('./lib/serve').default;
 
