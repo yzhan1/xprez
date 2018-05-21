@@ -1,13 +1,17 @@
 {
   "name": "xprez",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "A minimal web framework (built on top of Express.js) that separates router, controllers and services.",
   "scripts": {
     "test": "jest"
   },
   "author": "Yaoming Zhan",
+  "bin": {
+    "xprez": "bin/index.js"
+  },
   "license": "MIT",
   "dependencies": {
+    "commander": "^2.15.1",
     "ejs": "^2.6.1",
     "express": "^4.16.2",
     "morgan": "^1.9.0"
@@ -25,7 +29,8 @@
     "web-framework",
     "framework",
     "backend-framework",
-    "backend"
+    "backend",
+    "cli"
   ],
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
