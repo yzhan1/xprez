@@ -1,4 +1,6 @@
-const { Controller } = require('../../..');
+'use strict';
+
+import { Controller } from '../../..';
 
 class UserController extends Controller {
   show(req, res) {
@@ -6,14 +8,15 @@ class UserController extends Controller {
     const language = this.config.dev.LANG;
     // access service
     const user = this.services.user.getUser(req.params.id);
-
     // access custom binds
     console.log(this.redis);
 
-    res.render('user', {
-      message: `Language: ${language} . User ID: ${user}`
-    });
+    res.render('user', { message: `Response from service: ${user}` });
+  }
+
+  new(req, res) {
+    res.json({ message: 'Generating new user' });
   }
 }
 
-module.exports = UserController;
+export default UserController;

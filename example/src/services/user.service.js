@@ -1,11 +1,16 @@
-const { Service } = require('../../..');
+'use strict';
+
+import { Service } from '../../..';
 
 class UserService extends Service {
   getUser(id) {
-    console.log(this.redis);
+    // access custom binds
+    const myRedis = this.redis;
+    // access other services
+    console.log(this.services.post.getPost(id));
 
-    return `${this.config.dev.LANG} user ${id}`;
+    return `User ${id} speaks ${this.config.dev.LANG}.`;
   }
 }
 
-module.exports = UserService;
+export default UserService;

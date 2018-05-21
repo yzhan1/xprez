@@ -1,3 +1,5 @@
-module.exports = {
+'use strict';
+
+export default {
   LANG: 'English'
 };
