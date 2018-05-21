@@ -4,8 +4,7 @@
 const program = require('commander');
 
 require('babel-register')({
-  presets: ['env'],
-  ignore: false
+  presets: ['env']
 });
 
 const serve = require('./lib/serve').default;
