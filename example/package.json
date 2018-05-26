@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "xprez": "^1.2.0"
+    "xprez": "^1.4.0"
   }
 }
