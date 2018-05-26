@@ -1,6 +1,6 @@
 'use strict';
 
-import { App as xprez } from '../../..';
+import { App as xprez } from '../..';
 
 const app = new xprez(__dirname, {
   // bind references in this hash
@@ -11,6 +11,3 @@ const app = new xprez(__dirname, {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
-
-// export app to expose it to the command-line runner
-export default app;

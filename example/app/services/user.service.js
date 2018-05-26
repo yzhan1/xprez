@@ -9,7 +9,7 @@ class UserService extends Service {
     // access other services
     console.log(this.services.post.getPost(id));
 
-    return `User ${id} speaks ${this.config.dev.LANG}.`;
+    return `User ${id} speaks ${this.config.LANG}.`;
   }
 }
 

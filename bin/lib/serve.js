@@ -4,7 +4,7 @@ export default (path) => {
   let message;
 
   try {
-    const server = require(path);
+    require(path);
     
     message = '|  ***   Starting Xprez app......  ***  |';
   } catch (e) {
