@@ -1,6 +1,6 @@
 {
   "name": "xprez",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A minimal web framework (built on top of Express.js) that separates router, controllers and services.",
   "scripts": {
     "test": "jest"
@@ -13,7 +13,8 @@
   "dependencies": {
     "commander": "^2.15.1",
     "ejs": "^2.6.1",
-    "express": "^4.16.2",
+    "esm": "^3.0.38",
+    "express": "^4.16.3",
     "morgan": "^1.9.0"
   },
   "repository": {
@@ -33,8 +34,6 @@
     "cli"
   ],
   "devDependencies": {
-    "babel-preset-env": "^1.7.0",
-    "babel-register": "^6.26.0",
-    "jest": "^22.4.2"
+    "jest": "^22.4.4"
   }
 }

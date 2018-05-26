@@ -1,6 +1,3 @@
-require('babel-register')({
-  presets: ['env'],
-  ignore: false
-});
+require = require('esm')(module);
 
 module.exports = require('./lib/application');

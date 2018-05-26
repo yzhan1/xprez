@@ -3,9 +3,7 @@
 
 const program = require('commander');
 
-require('babel-register')({
-  presets: ['env']
-});
+require = require('esm')(module);
 
 const serve = require('./lib/serve').default;
 
