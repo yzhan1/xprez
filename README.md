@@ -11,7 +11,7 @@ Heavily inspired by [Egg.js](https://github.com/eggjs/egg) and [Ruby on Rails](h
 ### Getting Started
 
 + To install, run `npm i -S xprez`
-+ To run the example, clone the repo, do `npm i` then run `xprez s`
++ To run the example, clone the repo, do `npm i`, `cd example` then run `xprez s`
 + To contribute, please first clone the repo, then run `npm i`
 
 #### Executable Bin
