@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Xprez will load the configuration based on the current environment automatically.
  * 

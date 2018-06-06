@@ -1,5 +1,3 @@
-'use strict';
-
 import { Service } from '../../..';
 
 class PostService extends Service {

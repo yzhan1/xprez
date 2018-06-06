@@ -1,5 +1,3 @@
-'use strict';
-
 export default (app) => {
   const { controllers } = app;
 

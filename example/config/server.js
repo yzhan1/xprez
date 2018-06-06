@@ -1,5 +1,3 @@
-'use strict';
-
 import { App as xprez } from '../..';
 
 const app = new xprez(__dirname, {

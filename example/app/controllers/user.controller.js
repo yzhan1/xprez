@@ -1,5 +1,3 @@
-'use strict';
-
 import { Controller } from '../../..';
 
 class UserController extends Controller {
