@@ -12,7 +12,7 @@ class UserController extends Controller {
     res.render('user', { message: `Response from service: ${user}` });
   }
 
-  new(req, res) {
+  create(_, res) {
     res.json({ message: 'Generating new user' });
   }
 }

@@ -1,8 +1,6 @@
 export default (app) => {
-  const { controllers } = app;
+  const { routes, controllers } = app;
 
-  return {
-    'get /users/:id': (...args) => controllers.user.show(...args),
-    'post /users': (...args) => controllers.user.new(...args)
-  };
+  routes.get('/users/:id', (...args) => controllers.user.show(...args));
+  routes.post('/users', (...args) => controllers.user.create(...args));
 };

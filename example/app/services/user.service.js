@@ -3,11 +3,11 @@ import { Service } from '../../..';
 class UserService extends Service {
   getUser(id) {
     // access custom binds
-    const myRedis = this.redis;
+    const { redis, services, config } = this;
     // access other services
-    console.log(this.services.post.getPost(id));
+    console.log(services.post.getPost(id));
 
-    return `User ${id} speaks ${this.config.LANG}.`;
+    return `User ${id} speaks ${config.LANG}.`;
   }
 }
 
