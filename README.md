@@ -11,7 +11,9 @@ Full documentation and CLI generator will be available soon.
 Heavily inspired by [Egg.js](https://github.com/eggjs/egg) and [Ruby on Rails](https://github.com/rails/rails).
 
 ## Purpose of this Library
-Imagine you work in a team of Express.js developers and everyone puts their code everywhere in the project (because Express.js has no restriction on code structure). This will soon make the code base messy and hard to maintain. With Xprez.js, you can easily apply MVC pattern to your web project, have a nice and clean Rails-ish folder structure and stop worrying about messy code base.
+Imagine you work in a team of Express.js developers and everyone puts their code everywhere in the project (because Express.js has no restriction on code structure). This will soon make the code base messy and hard to maintain. 
+
+With Xprez.js, you can easily apply MVC pattern to your web project, have a nice and clean Rails-ish folder structure and stop worrying about messy code base.
 
 ## Getting Started
 
