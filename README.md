@@ -2,21 +2,41 @@
 
 ![npm downloads](https://img.shields.io/npm/dt/xprez.svg?style=flat-square) ![npm](https://img.shields.io/npm/v/xprez.svg?style=flat-square) [![Maintainability](https://api.codeclimate.com/v1/badges/18a4dfac6bbc30040e34/maintainability)](https://codeclimate.com/github/yzhan1/xprez/maintainability) 
 
+#### Notification: This is still a Work in Progress
+
 A minimal opinionated ES6 web framework (built on top of [Express.js](https://github.com/expressjs/express/)) that separates router, controllers and services. 
 
 Full documentation and CLI generator will be available soon.
 
 Heavily inspired by [Egg.js](https://github.com/eggjs/egg) and [Ruby on Rails](https://github.com/rails/rails).
 
-### Getting Started
+## Purpose of this Library
+Imagine you work in a team of Express.js developers and everyone puts their code everywhere in the project (because Express.js has no restriction on code structure). This will soon make the code base messy and hard to maintain. With Xprez.js, you can easily apply MVC pattern to your web project, have a nice and clean Rails-ish folder structure and stop worrying about messy code base.
 
-+ To install, run `npm i -S xprez`
-+ To run the example, clone the repo, do `npm i`, `cd example` then run `xprez s`
-+ To contribute, please first clone the repo, then run `npm i`
+## Getting Started
 
-#### Executable Bin
+To install:
+```
+npm i -S xprez
+```
+To run the example:
+```
+git clone https://github.com/yzhan1/xprez.git
+cd xprez/
+npm i
+cd example/
+xprez s
+```
+To contribute:
+```
+git clone https://github.com/yzhan1/xprez.git
+cd xprez/
+npm i
+```
 
-By default, apps need to be run with `xprez s` or `xprez serve`. The command-line runner will have a scaffolding option available soon.
+### Executable Bin
+
+Apps need to be run with `xprez s` or `xprez serve`. The command-line runner will have a scaffolding option available soon.
 
 ### Example Code Snippet
 
