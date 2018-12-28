@@ -127,6 +127,7 @@ const app = new Xprez(__dirname, {
   redis: new RedisClient(),
   db: new SQLConnector()
 });
+
 app.listen(app.config.port);
 ```
 
@@ -151,6 +152,7 @@ Then we need a basic implementation of `UserController`.
 ```javascript
 // app/controllers/user.controller.js
 import { Controller } from 'xprez';
+
 export default class UserController extends Controller {
   show(req, res) {
     res.send('Hello');
@@ -175,6 +177,7 @@ A basic controller implementation looks like this:
 ```javascript
 // app/controllers/user.controller.js
 import { Controller } from 'xprez';
+
 export default class UserController extends Controller {
   async show(req, res) {
     const userId = req.params.id;
@@ -197,6 +200,7 @@ A basic service implementation:
 ```javascript
 // app/services/user.service.js
 import { Service } from 'xprez';
+
 export default class UserService extends Service {
   async findById(id) {
     const user = await this.db.findById(id);
