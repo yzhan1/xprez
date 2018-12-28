@@ -113,7 +113,7 @@ All generate commands need to be executed in the root of the project folder, oth
 
 ## Documentation
 
-The main components are inside `app/` and `config/` folders. App folder contains key components including controllers, services, views and models. Config folder includes files with config variables, routes declairation and server entry file.
+The main components are inside `app/` and `config/` folders. App folder contains key components including controllers, services, views and models. Config folder includes files with config variables, routes declaration and server entry file.
 
 ### config/server.js
 
