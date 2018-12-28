@@ -16,7 +16,7 @@ program
 
 program
   .command('s')
-  .description('[S]tart app server (cwd must be the project root directory with `src/config` inside it)')
+  .description('[S]tart app server (cwd must be the project root directory with `./app` and `./config` inside it)')
   .action(() => serve(appFile));
 
 program 
