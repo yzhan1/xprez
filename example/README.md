@@ -1,4 +1,4 @@
-# test-app
+# example
 
 This app is created using [xprez.js](https://github.com/yzhan1/xprez).
 
@@ -6,7 +6,7 @@ This app is created using [xprez.js](https://github.com/yzhan1/xprez).
 
 To run the server, run the following command
 ```
-cd test-app/
+cd example/
 npm i
 xprez s
 ```

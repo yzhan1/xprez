@@ -1,19 +1,38 @@
 import { Controller } from '../../..';
 
 class UserController extends Controller {
-  show(req, res) {
-    // access config
-    const language = this.config.LANG;
-    // access service
-    const user = this.services.user.getUser(req.params.id);
-    // access custom binds
-    console.log(this.redis);
+  index(req, res) {
 
-    res.render('user', { message: `Response from service: ${user}` });
   }
 
-  create(_, res) {
-    res.json({ message: 'Generating new user' });
+  show(req, res) {
+    // controller has access to binds defined in `config/server.js` and configuration file
+    const { services, redis, config } = this;
+     
+    const uid = req.params.id;
+    const { user, posts } = services.user.findById(uid);
+
+    res.render('users/show', { user, posts });
+  }
+
+  new(req, res) {
+
+  }
+
+  edit(req, res) {
+
+  }
+
+  create(req, res) {
+
+  }
+
+  update(req, res) {
+
+  }
+
+  destroy(req, res) {
+    
   }
 }
 

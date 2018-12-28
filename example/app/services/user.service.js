@@ -1,13 +1,16 @@
 import { Service } from '../../..';
 
 class UserService extends Service {
-  getUser(id) {
-    // access custom binds
-    const { redis, services, config } = this;
-    // access other services
-    console.log(services.post.getPost(id));
+  findById(uid) {
+    // access binds
+    const { services, redis, config } = this;
+    console.log(this.config);
+    const posts = services.post.getPostsForUser(uid);
 
-    return `User ${id} speaks ${config.LANG}.`;
+    console.log(`Redis URL: ${redis}`);
+    console.log(`DB URL: ${config.db}`);
+
+    return { user: 'user1', posts };
   }
 }
 

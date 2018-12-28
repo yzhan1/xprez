@@ -5,9 +5,10 @@ export default (path) => {
   let message, success;
 
   try {
-    require(path);
+    const server = require(path).default;
+    const port = server._events.request.config.port;
     
-    message = `|  ${marks('success')}   Starting Xprez app.....   ${marks('success')}  |`;
+    message = `|  ${marks('success')}   App live on port ${port}...  ${marks('success')}  |`;
     success = true;
   } catch (e) {
     console.log(logSymbols.error, e);

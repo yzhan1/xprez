@@ -6,5 +6,6 @@ const app = new Xprez(__dirname, {
   // redis: new RedisClient
 });
 
-app.listen(app.config.port, () => 
-  console.log(`App is live on port ${app.config.port}`));
+const server = app.listen(app.config.port);
+
+export default server;

@@ -16,7 +16,8 @@ const structure = [
       {
         environments: [
           'development.js',
-          'production.js'
+          'production.js',
+          'test.js'
         ]
       },
       'routes.js',
@@ -37,6 +38,7 @@ const templateMap = {
 
   'production.js': loadTemplate('config/environments/production.js'),
   'development.js': loadTemplate('config/environments/development.js'),
+  'test.js': loadTemplate('config/environments/test.js'),
   'routes.js': loadTemplate('config/routes.js'),
   'server.js': loadTemplate('config/server.js'),
   '.gitignore': loadTemplate('gitignore'),
