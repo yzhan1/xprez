@@ -1,4 +1,4 @@
-import { App as Xprez } from '../..';
+import { App as Xprez } from 'xprez';
 
 const app = new Xprez(__dirname, {
   // bind references in this hash

@@ -6,8 +6,8 @@ const program = require('commander');
 
 require = require('esm')(module);
 
-const serve = require('./lib/serve').default;
-const generate = require('./lib/generate').default;
+const serve = require('./commands/serve').default;
+const generate = require('./commands/generate').default;
 
 const appFile = `${process.cwd()}/config/server`;
 

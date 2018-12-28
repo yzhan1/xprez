@@ -1,4 +1,4 @@
-import { Controller } from '../../..';
+import { Controller } from 'xprez';
 
 class HelloController extends Controller {
   index(req, res) {

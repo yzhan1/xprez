@@ -1,13 +1,5 @@
-import chalk from 'chalk';
 import logSymbols from 'log-symbols';
-
-const log = (success, msg) => {
-  success
-    ? console.log(chalk.green.bold(msg))
-    : console.log(chalk.red.bold(msg));
-};
-
-const marks = (flag) => `${logSymbols[flag]}${logSymbols[flag]}${logSymbols[flag]}`;
+import { log, marks } from '../utils';
 
 export default (path) => {
   let message, success;
