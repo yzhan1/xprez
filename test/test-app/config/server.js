@@ -1,12 +1,10 @@
-import { App as Xprez } from '../..';
+import { App as Xprez } from 'xprez';
 
 const app = new Xprez(__dirname, {
   // bind references in this hash
   // `config`, `controllers` and `services` are reserved keywords
-  redis: 'Random Redis Client'
+  // redis: new RedisClient
 });
 
 app.listen(app.config.port, () => 
-  console.log(`App is live on port ${PORT}`));
-
-export default app;
+  console.log(`App is live on port ${app.config.port}`));

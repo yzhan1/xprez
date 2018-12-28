@@ -1,6 +1,6 @@
 # Xprez.js
 
-![npm downloads](https://img.shields.io/npm/dt/xprez.svg?style=flat-square) ![npm](https://img.shields.io/npm/v/xprez.svg?style=flat-square)  [![Known Vulnerabilities](https://snyk.io/test/github/yzhan1/xprez/badge.svg?style=flat-square)](https://snyk.io/test/github/yzhan1/xprez) [![Maintainability](https://api.codeclimate.com/v1/badges/18a4dfac6bbc30040e34/maintainability)](https://codeclimate.com/github/yzhan1/xprez/maintainability)
+![npm downloads](https://img.shields.io/npm/dt/xprez.svg) ![npm](https://img.shields.io/npm/v/xprez.svg) [![Build Status](https://travis-ci.org/yzhan1/xprez.svg?branch=master&style=flat-square)](https://travis-ci.org/yzhan1/xprez) [![Known Vulnerabilities](https://snyk.io/test/github/yzhan1/xprez/badge.svg)](https://snyk.io/test/github/yzhan1/xprez) [![Maintainability](https://api.codeclimate.com/v1/badges/18a4dfac6bbc30040e34/maintainability)](https://codeclimate.com/github/yzhan1/xprez/maintainability)
 
 ** Notification: This is still a Work in Progress **
 

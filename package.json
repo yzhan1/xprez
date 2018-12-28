@@ -3,7 +3,7 @@
   "version": "2.2.1",
   "description": "A minimal web framework (built on top of Express.js) that separates router, controllers and services.",
   "scripts": {
-    "test": "jest"
+    "test": "./node_modules/mocha/bin/mocha ./test/*.test.js"
   },
   "author": "Yaoming Zhan",
   "bin": {
@@ -36,6 +36,6 @@
     "cli"
   ],
   "devDependencies": {
-    "jest": "^22.4.4"
+    "mocha": "^5.2.0"
   }
 }
