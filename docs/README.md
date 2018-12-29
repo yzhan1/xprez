@@ -76,26 +76,26 @@ This will create `./myapp` with the following structure:
 myapp/
 ├── package-lock.json
 ├── package.json
-├── app
-    ├── controllers
+├── app/
+    ├── controllers/
         ├── hello.controller.js
         └── // place controllers here
-    ├── services
+    ├── services/
         └── // place services here
-    ├── views
+    ├── views/
         └── index.ejs
-    ├── models
-    └── public
-├── config
-    ├── environments
+    ├── models/
+    └── public/
+├── config/
+    ├── environments/
         ├── development.js // development config vars
         ├── test.js        // test config vars
         └── production.js  // prod config vars
     ├── server.js          // App's entry point
     └── routes.js 
-└── test
-    ├── controllers        // controllers test
-    └── services           // services test
+└── test/
+    ├── controllers/       // controllers test
+    └── services/          // services test
 ```
 
 Notice that you need to strictly follow
