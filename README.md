@@ -227,7 +227,7 @@ export default class UserService extends Service {
 
 Service classes also have access to config/binds/other services. It's recommended to put all business logic inside service classes so they can be accessed by other controllers/services.
 
-## Extention
+## Extension
 
 Since the `Application` class is an Express app under the hood, you can still treat it like a normal Express.js app, which means you can add in models, middlewares, authentications and other plugins/libraries as you normally would.
 
