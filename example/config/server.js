@@ -1,6 +1,6 @@
-import { App as Xprez } from '../..';
+import { App as Application } from '../..';
 
-const app = new Xprez(__dirname, {
+const app = new Application(__dirname, {
   // bind references in this hash
   // `config`, `controllers` and `services` are reserved keywords
   redis: 'RedisClient'

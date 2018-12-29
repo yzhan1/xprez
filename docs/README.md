@@ -41,6 +41,12 @@ $ git clone https://github.com/yzhan1/xprez.git
 $ cd xprez/ && npm i
 ```
 
+Running test suite:
+
+```bash
+$ npm test
+```
+
 ### Executable Commands
 
 All commands need to be run in the project directory.
@@ -74,13 +80,16 @@ myapp/
         └── index.ejs
     ├── models
     └── public
-└── config
+├── config
     ├── environments
         ├── development.js // development config vars
         ├── test.js        // test config vars
         └── production.js  // prod config vars
-    ├── server.js      ------> App's entry point
+    ├── server.js          // App's entry point
     └── routes.js 
+└── test
+    ├── controllers        // controllers test
+    └── services           // services test
 ```
 
 Notice that you need to strictly follow
@@ -122,15 +131,18 @@ The main components are inside `app/` and `config/` folders. App folder contains
 This file includes the server initialization code.
 
 ```javascript
-import { App as Xprez } from 'xprez';
+import { App as Application } from 'xprez';
 
-const app = new Xprez(__dirname, {
+const app = new Application(__dirname, {
   // bind references in this hash
   redis: new RedisClient(),
-  db: new SQLConnector()
+  db: new SQLClient()
 });
 
-app.listen(app.config.port);
+const server = app.listen(app.config.port);
+
+// expose server for testing
+export default server;
 ```
 
 You can pass in a hash to the constructor to bind config/database connections or other stuffs to the app object. They can be used in controller and service classes later.
@@ -214,6 +226,31 @@ export default class UserService extends Service {
 ```
 
 Service classes also have access to config/binds/other services. It's recommended to put all business logic inside service classes so they can be accessed by other controllers/services.
+
+## Extention
+
+Since the `Application` class is an Express app under the hood, you can still treat it like a normal Express.js app, which means you can add in models, middlewares, authentications and other plugins/libraries as you normally would.
+
+## Testing
+
+You can test the application like how you test an Express app. A starting test script would look like:
+
+```javascript
+require = require('esm')(module);
+
+describe('Application', () => {
+  let server, app;
+
+  beforeEach(() => {
+    server = require('../config/server').default;
+    app = server._events.request;
+  });
+
+  afterEach(() => server.close());
+});
+```
+
+Then you can access the `app` instance and test it using request libraries.
 
 ## Future Improvements
 

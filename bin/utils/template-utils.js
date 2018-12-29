@@ -24,6 +24,12 @@ const structure = [
       'server.js'
     ]
   },
+  {
+    test: [
+      { controllers: [] },
+      { services: [] }
+    ]
+  },
   '.gitignore',
   'package.json',
   'README.md'
