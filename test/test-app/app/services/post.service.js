@@ -1,4 +1,4 @@
-import { Service } from '../../../..';
+import { Service } from '../../../../';
 
 class PostService extends Service {
   

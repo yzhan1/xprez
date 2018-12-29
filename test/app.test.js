@@ -3,21 +3,18 @@ require = require('esm')(module);
 const assert = require('assert');
 
 describe('Application', () => {
-  let server, app;
-  const binds = ['controllers', 'services', 'routes', 'config'];
+  let app;
+  const binds = ['controllers', 'services', 'routes', 'config', 'utils'];
   const controllers = ['hello', 'user', 'post'];
   const services = ['user', 'post'];
+  const utils = ['math'];
 
   beforeEach(() => {
-    server = require('./test-app/config/server').default;
-    app = server._events.request;
+    app = require('./test-app/config/server').default;
   });
 
-  afterEach(() => server.close());
-
   it('should have all binds', () => {
-    binds.forEach((bind) =>
-      assert.notStrictEqual(app[bind], undefined));
+    binds.forEach((bind) => assert.notStrictEqual(app[bind], undefined));
   });
 
   it('should bind all controllers', () => {
@@ -28,6 +25,15 @@ describe('Application', () => {
   it('should bind all services', () => {
     services.forEach((service) => 
       assert.notStrictEqual(app.services[service]), undefined);
+  });
+
+  it('should bind all utils', () => {
+    utils.forEach((util) => assert.notStrictEqual(app.utils[util], undefined));
+  });
+
+  it('should load test config', () => {
+    const config = require('./test-app/config/environments/test').default;
+    assert.strictEqual(app.config, config);
   });
 
   it('should bind reference only', () => {

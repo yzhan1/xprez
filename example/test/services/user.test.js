@@ -9,6 +9,10 @@ describe('user.service.js', () => {
     assert.strictEqual(userService.logger, 'Test logger');
   });
 
+  it('should have access to math.util.js', () => {
+    assert.notStrictEqual(userService.utils.math, undefined);
+  });
+
   it('should be able to find user by id', () => {
     const { user, posts } = userService.findById(1);
     assert.strictEqual(user, 'user1');

@@ -12,6 +12,9 @@ describe('Controller and Service', () => {
     app.config = { lang: 'english' };
     app.env = 'TEST';
     app.services = { user: 'userService', post: 'postService' };
+    app.utils = { 
+      math: { addOne: (x) => x + 1 }
+    };
     app.userBindings = { testVar: 'test' };
   });
 
@@ -20,6 +23,7 @@ describe('Controller and Service', () => {
     assert.strictEqual(baseClass.config, app.config.config);
     assert.strictEqual(baseClass.env, app.env);
     assert.strictEqual(baseClass.services, app.services);
+    assert.strictEqual(baseClass.utils, app.utils);
     assert.strictEqual(baseClass.testVar, app.userBindings.testVar);
   });
 
@@ -27,6 +31,11 @@ describe('Controller and Service', () => {
     const baseClass = new BaseClass(app);
     ['user', 'post'].forEach((service) =>
       assert.notDeepEqual(baseClass.services[service], undefined));
+  });
+
+  it('should be able to access utils', () => {
+    const baseClass = new BaseClass(app);
+    assert.ok(baseClass.utils.math.addOne instanceof Function);
   });
 
   it('should not allow using reserved keys', () => {

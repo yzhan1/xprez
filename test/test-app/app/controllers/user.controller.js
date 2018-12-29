@@ -1,4 +1,4 @@
-import { Controller } from '../../../..';
+import { Controller } from '../../../../';
 
 class UserController extends Controller {
   index(req, res) {

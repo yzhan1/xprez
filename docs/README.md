@@ -89,6 +89,8 @@ myapp/
     ├── views/
         └── index.ejs
     ├── models/
+    ├── utils/
+        └── // place utilities here
     └── public/
 ├── config/
     ├── environments/
@@ -99,7 +101,8 @@ myapp/
     └── routes.js
 └── test/
     ├── controllers/       // controller tests
-    └── services/          // service tests
+    ├── services/          // service tests
+    └── utils/             // utility tests
 ```
 
 Notice that you need to strictly follow
@@ -112,7 +115,7 @@ this structure in order to make your app executable.
 $ xprez s
 ```
 
-### Generate new controller/service
+### Generate new controller/service/util
 
 First `cd myapp` and run the following command
 
@@ -129,6 +132,13 @@ $ xprez g post -s
 ```
 
 This generates `myapp/app/services/post.service.js`.
+
+```bash
+# math is the utility class name, -u is for --utility
+$ xprez g math -u
+```
+
+This generates `myapp/app/utils/math.util.js`.
 
 All generate commands need to be executed in the root of the project folder, otherwise it will throw file not found error.
 
@@ -198,7 +208,8 @@ Xprez.js will only load the config file based on the environment. So in dev envi
 
 ### app/controllers
 
-Controllers are responsible for handling each request and sending response to the client.
+Controllers are responsible for handling each request and sending response to the client. You can generate a controller class using
+`xprez g <controllerName> -c`.
 
 A basic controller implementation looks like this:
 
@@ -210,6 +221,7 @@ export default class UserController extends Controller {
   async show(req, res) {
     const uid = req.params.id;
     const user = await this.services.user.findById(uid);
+    const two = this.utils.math.addOne(1);
     this.redis.set(uid, user);
     const { language } = this.config;
     res.render('users/show', { user, language });
@@ -217,11 +229,12 @@ export default class UserController extends Controller {
 }
 ```
 
-Notice that the controller object has access to our services, configuration and the custom binds we declared in `config/server.js`.
+Notice that the controller object has access to our services, utils, configuration and the custom binds we declared in `config/server.js`.
 
 ### app/services
 
-Service is a layer used to encapsulate business logic in complex business circumstances.
+Service is a layer used to encapsulate business logic in complex business circumstances. You can generate a service class using 
+`xprez g <serviceName> -s`.
 
 A basic service implementation:
 
@@ -231,6 +244,7 @@ import { Service } from 'xprez';
 
 export default class UserService extends Service {
   async findById(uid) {
+    const two = this.utils.math.addOne(1);
     const user = await this.db.findById(uid);
     user.language = this.config.language;
     this.services.post.save(user.posts);
@@ -239,7 +253,24 @@ export default class UserService extends Service {
 }
 ```
 
-Service classes also have access to config/binds/other services. It's recommended to put all business logic inside service classes so they can be accessed by other controllers/services.
+Service classes also have access to config/utils/binds/other services. It's recommended to put all business logic inside service classes so they can be accessed by other controllers/services.
+
+### app/utils
+
+Utililities are mainly stateless helper functions that you want to use throughout your project. You can generate a utility class by doing `xprez g <utilityName> -u`.
+
+Utility files usually look like this:
+
+```javascript
+// app/utils/math.util.js
+export default {
+  addOne(x) {
+    return x + 1;
+  }
+};
+```
+
+Then, in your `Controller` or `Service`, you can access them by using `this.utils.math.addOne(x)`.
 
 ## Extensions
 
@@ -284,9 +315,8 @@ to `package.json` as an npm script. It's also recommended to use [supertest](htt
 
 ## Future Improvements
 
-+ Model support for MySQL/PostgreSQL/MongoDB
 + Middleware support
-+ Better test support
++ Model support for MySQL/PostgreSQL/MongoDB
 
 ## License
 

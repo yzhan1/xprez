@@ -31,7 +31,8 @@ const structure = [
   {
     test: [
       { controllers: [] },
-      { services: [] }
+      { services: [] },
+      { utils: [] }
     ]
   },
   '.gitignore',

@@ -10,7 +10,7 @@ class UserService extends Service {
     // access binds
     const { services, redis, config, utils } = this;
     console.log(this.config);
-    console.log(utils.user.addOne(1));
+    console.log(utils.math.addOne(1));
     const posts = services.post.getPostsForUser(uid);
 
     console.log(`Redis URL: ${redis}`);
