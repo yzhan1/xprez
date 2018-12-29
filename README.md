@@ -237,6 +237,18 @@ Service classes also have access to config/binds/other services. It's recommende
 
 Since the `Application` class is an Express app under the hood, you can still treat it like a normal Express.js app, which means you can add in models, middlewares, authentications and other plugins/libraries as you normally would.
 
+To extend a `Controller` or `Service`, all you need to do is add the constructor declaration by doing:
+
+```javascript
+/* same pattern can be used for Controller class as well */
+export default class UserService extends Service {
+  constructor(app) {
+    super(app); // must call super(app) to bind other references
+    this.logger = require('log4js').getLogger;
+  }
+}
+```
+
 ## Testing
 
 You can test the application like how you test an Express app. A starting test script would look like:

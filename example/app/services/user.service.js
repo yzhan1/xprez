@@ -1,6 +1,11 @@
 import { Service } from '../../..';
 
 class UserService extends Service {
+  constructor(app) {
+    super(app);
+    this.logger = 'Test logger';
+  }
+
   findById(uid) {
     // access binds
     const { services, redis, config } = this;
