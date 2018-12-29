@@ -3,7 +3,6 @@ import fs from 'fs';
 import ejs from 'ejs';
 import logSymbols from 'log-symbols';
 import { capitalize, TemplateUtils, log } from '../utils';
-import { V4MAPPED } from 'dns';
 
 const { ejsTemplates, templateMap, structure } = TemplateUtils;
 
