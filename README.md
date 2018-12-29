@@ -198,10 +198,10 @@ import { Controller } from 'xprez';
 
 export default class UserController extends Controller {
   async show(req, res) {
-    const userId = req.params.id;
-    const user = await this.services.user.findById(userId);
-    this.redis.set(userId, user);
-    const language = { this.config };
+    const uid = req.params.id;
+    const user = await this.services.user.findById(uid);
+    this.redis.set(uid, user);
+    const { language } = this.config;
     res.render('users/show', { user, language });
   }
 }
@@ -220,8 +220,8 @@ A basic service implementation:
 import { Service } from 'xprez';
 
 export default class UserService extends Service {
-  async findById(id) {
-    const user = await this.db.findById(id);
+  async findById(uid) {
+    const user = await this.db.findById(uid);
     user.language = this.config.language;
     this.services.post.save(user.posts);
     return user;
