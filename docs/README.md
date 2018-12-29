@@ -25,6 +25,8 @@ Heavily inspired by [Egg.js](https://github.com/eggjs/egg) and [Ruby on Rails](h
 To install:
 
 ```bash
+# install globally to use the cli
+$ npm i -g xprez
 $ npm i -S xprez
 ```
 
