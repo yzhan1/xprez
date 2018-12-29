@@ -1,6 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 
+/**
+ * Project folder structure
+ */
 const structure = [
   {
     app: [
@@ -9,6 +12,7 @@ const structure = [
       { public: [] },
       { services: [] },
       { views: ['index.ejs'] },
+      { utils: [] }
     ]
   },
   {
@@ -41,6 +45,7 @@ const loadTemplate = (name) =>
 const templateMap = {
   controller: loadTemplate('app/controller.js.ejs'),
   service: loadTemplate('app/service.js.ejs'),
+  utility: loadTemplate('app/util.js'),
 
   'production.js': loadTemplate('config/environments/production.js'),
   'development.js': loadTemplate('config/environments/development.js'),
@@ -54,8 +59,26 @@ const templateMap = {
   'index.ejs': loadTemplate('app/views/index.ejs')
 };
 
-const ejsTemplates = ['package.json', 'README.md'];
+const filePathMapping = {
+  controller: {
+    folder: 'app/controllers',
+    suffix: '.controller.js'
+  },
+  service: {
+    folder: 'app/services',
+    suffix: '.service.js'
+  },
+  utility: {
+    folder: 'app/utils',
+    suffix: '.util.js'
+  }
+};
+
+/**
+ * Templates that need to render from EJS
+ */
+const ejsTemplates = ['package.json', 'README.md', 'controller', 'service'];
 
 export default {
-  ejsTemplates, templateMap, structure
+  ejsTemplates, templateMap, structure, filePathMapping
 };

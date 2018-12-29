@@ -4,8 +4,17 @@ import ejs from 'ejs';
 import logSymbols from 'log-symbols';
 import { capitalize, TemplateUtils, log } from '../utils';
 
-const { ejsTemplates, templateMap, structure } = TemplateUtils;
+const {
+  ejsTemplates, templateMap, structure, filePathMapping
+} = TemplateUtils;
 
+/**
+ * Write content to a file. Throws error if file exists already
+ * or path is invalid.
+ * 
+ * @param {string} path File path
+ * @param {string} str File content
+ */
 const write = (path, str) => {
   try {
     if (fs.existsSync(path)) {
@@ -20,6 +29,14 @@ const write = (path, str) => {
   }
 }
 
+/**
+ * Create a new folder and generate files based on required folder
+ * structure. 
+ * 
+ * @param {Array} structure Structure for current folder
+ * @param {string} currPath Current folder path
+ * @param {string} appName Name of the app/project
+ */
 const createFolder = (structure, currPath, appName) => {
   if (structure.length === 0) {
     // add .gitkeep file for empty folders
@@ -44,33 +61,44 @@ const createFolder = (structure, currPath, appName) => {
   });
 };
 
-const createFile = (name, filePath, component) => {
-  if (component === 'controller' || component === 'service') {
-    const tpl = ejs.render(templateMap[component], { name: capitalize(name) });
-    write(filePath, tpl);
-  } else if (component === 'model') {
-    // generate model
-    log(false, `${logSymbols['error']} Model generation not supported yet!`);
+/**
+ * Generate template for a component and write it to file
+ * 
+ * @param {string} name Name for Controller/Service/Util
+ * @param {string} component Controller/Service/Util
+ */
+const createFile = (name, component) => {
+  const { folder, suffix } = filePathMapping[component];
+  const destination = path.join(process.cwd(), folder, `${name}${suffix}`);
+
+  let tpl = templateMap[component];
+  if (ejsTemplates.includes(component)) {
+    tpl = ejs.render(templateMap[component], { name: capitalize(name) });
   }
+  write(destination, tpl);
 };
 
+/**
+ * All options available for `xprez g`
+ */
+const allOptions = ['controller', 'service', 'utility'];
+
+/**
+ * Generate a new project or component template based on the command
+ */
 export default (targetName, cmd) => {
-  if (!cmd.controller && !cmd.service) {
+  if (!cmd.controller && !cmd.service && !cmd.utility) {
     // generate full project
     const destination = path.join(process.cwd(), targetName);
 
     fs.mkdirSync(destination);
     createFolder(structure, destination, targetName);
   } else {
-    if (cmd.controller) {
-      // generate controller
-      const destination = path.join(process.cwd(), 'app/controllers', targetName + '.controller.js');
-      createFile(targetName, destination, 'controller');
-    }
-    if (cmd.service) {
-      // generate service
-      const destination = path.join(process.cwd(), 'app/services', targetName + '.service.js');
-      createFile(targetName, destination, 'service');
-    }
+    // generate individual templates
+    allOptions.forEach((option) => {
+      if (cmd[option]) {
+        createFile(targetName, option);
+      }
+    });
   }
 };

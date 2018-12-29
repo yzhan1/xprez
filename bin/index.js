@@ -22,9 +22,10 @@ program
 
 program 
   .command('g <targetName>')
-  .option('-c, --controller', '[G]enerate controller')
-  .option('-s, --service', '[G]enerate a new service')
-  .description('[G]enerate a new project/controller/service')
+  .option('-c, --controller', 'Generate controller')
+  .option('-s, --service', 'Generate a new service')
+  .option('-u, --utility', 'Generate a new utility class')
+  .description('[G]enerate a new project/controller/service/utility')
   .action(generate);
   
 program.parse(process.argv);

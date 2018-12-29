@@ -8,8 +8,9 @@ class UserService extends Service {
 
   findById(uid) {
     // access binds
-    const { services, redis, config } = this;
+    const { services, redis, config, utils } = this;
     console.log(this.config);
+    console.log(utils.user.addOne(1));
     const posts = services.post.getPostsForUser(uid);
 
     console.log(`Redis URL: ${redis}`);

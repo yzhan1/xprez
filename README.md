@@ -286,7 +286,6 @@ to `package.json` as an npm script. It's also recommended to use [supertest](htt
 
 + Model support for MySQL/PostgreSQL/MongoDB
 + Middleware support
-+ Better test support
 
 ## License
 
