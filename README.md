@@ -2,15 +2,19 @@
   <img src="./logo.png">
 </p>
 
-![npm downloads](https://img.shields.io/npm/dt/xprez.svg) ![npm](https://img.shields.io/npm/v/xprez.svg) [![Build Status](https://travis-ci.org/yzhan1/xprez.svg?branch=master&style=flat-square)](https://travis-ci.org/yzhan1/xprez) [![Known Vulnerabilities](https://snyk.io/test/github/yzhan1/xprez/badge.svg)](https://snyk.io/test/github/yzhan1/xprez) [![Maintainability](https://api.codeclimate.com/v1/badges/18a4dfac6bbc30040e34/maintainability)](https://codeclimate.com/github/yzhan1/xprez/maintainability)
+![npm downloads](https://img.shields.io/npm/dt/xprez.svg) ![npm](https://img.shields.io/npm/v/xprez.svg) [![Build Status](https://travis-ci.org/yzhan1/xprez.svg?branch=master&style=flat-square)](https://travis-ci.org/yzhan1/xprez) [![Known Vulnerabilities](https://snyk.io/test/github/yzhan1/xprez/badge.svg)](https://snyk.io/test/github/yzhan1/xprez) [![Maintainability](https://api.codeclimate.com/v1/badges/18a4dfac6bbc30040e34/maintainability)](https://codeclimate.com/github/yzhan1/xprez/maintainability) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/yzhan1/xprez/issues)
 
-# Xprez.js
+# [Xprez.js](https://yzhan1.github.io/xprez)
 
 ** Notification: This is still a Work in Progress **
 
 A minimal opinionated ES6 web framework with CLI (built on top of [Express.js](https://github.com/expressjs/express/)) that separates router, controllers and services.
 
 Heavily inspired by [Egg.js](https://github.com/eggjs/egg) and [Ruby on Rails](https://github.com/rails/rails).
+
+[View Documentation](https://yzhan1.github.io/xprez)
+
+[GitHub Repo](https://github.com/yzhan1/xprez)
 
 ## Features
 
@@ -94,8 +98,8 @@ myapp/
     ├── server.js          // App's entry point
     └── routes.js
 └── test/
-    ├── controllers/       // controllers test
-    └── services/          // services test
+    ├── controllers/       // controller tests
+    └── services/          // service tests
 ```
 
 Notice that you need to strictly follow
@@ -147,10 +151,12 @@ const app = new Application(__dirname, {
 // you can choose to configure a view engine, or just send json as response
 app.set('view engine', 'ejs');
 
-const server = app.listen(app.config.port);
-
-// expose server for testing
-export default server;
+// don't run the server when testing
+if (app.env !== 'test') {
+  app.listen(app.config.port);
+}
+// expose app for testing
+export default app;
 ```
 
 You can pass in a hash to the constructor to bind config/database connections or other stuffs to the app object. They can be used in controller and service classes later.
@@ -235,7 +241,7 @@ export default class UserService extends Service {
 
 Service classes also have access to config/binds/other services. It's recommended to put all business logic inside service classes so they can be accessed by other controllers/services.
 
-## Extension
+## Extensions
 
 Since the `Application` class is an Express app under the hood, you can still treat it like a normal Express.js app, which means you can add in models, middlewares, authentications and other plugins/libraries as you normally would.
 
@@ -256,31 +262,31 @@ export default class UserService extends Service {
 You can test the application like how you test an Express app. A starting test script would look like:
 
 ```javascript
+// test/controllers/user.test.js
 require = require('esm')(module);
 
-describe('Application', () => {
-  let server, app;
+const request = require('supertest');
+const app = require('path/to/config/server.js').default;
 
-  beforeEach(() => {
-    server = require('../config/server').default;
-    app = server._events.request;
-  });
-
-  afterEach(() => server.close());
-
-  it('should give expected result', () => {
-    // add assertions here
+describe('Test user.controller.js', () => {
+  it('should return 200', (done) => {
+    request(app)
+      .get('/users/1')
+      .expect(200, done);
   });
 });
 ```
 
 Then you can access the `app` instance and test it using request libraries.
 
+Remember to set `NODE_ENV` to `test` when testing so that the server won't actually start! It's recommended to add your test scripts
+to `package.json` as an npm script. It's also recommended to use [supertest](https://github.com/visionmedia/supertest) for testing, but theoretically you can use any libraries you like.
+
 ## Future Improvements
 
 + Model support for MySQL/PostgreSQL/MongoDB
-+ Test support
 + Middleware support
++ Better test support
 
 ## License
 

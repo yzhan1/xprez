@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "xprez s",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test mocha ./test/*/*.test.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "supertest": "^3.3.0",
     "xprez": "^1.5.1"
   }
 }

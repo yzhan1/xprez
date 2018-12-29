@@ -5,8 +5,8 @@ export default (path) => {
   let message, success;
 
   try {
-    const server = require(path).default;
-    const port = server._events.request.config.port;
+    const app = require(path).default;
+    const { port } = app.config;
     
     message = `|  ${marks('success')}   App live on port ${port}...  ${marks('success')}  |`;
     success = true;
