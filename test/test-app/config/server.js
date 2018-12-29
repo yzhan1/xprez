@@ -6,6 +6,8 @@ const app = new Xprez(__dirname, {
   // redis: new RedisClient
 });
 
+app.set('view engine', 'ejs');
+
 const server = app.listen(app.config.port);
 
 export default server;

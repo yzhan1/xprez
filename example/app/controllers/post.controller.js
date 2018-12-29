@@ -8,7 +8,10 @@ class PostController extends Controller {
   }
 
   show(req, res) {
-    
+    res.json({
+      id: req.params.id,
+      post: 'This is post content'
+    });
   }
 
   new(req, res) {

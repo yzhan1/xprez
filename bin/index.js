@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 'use strict';
 
 const chalk = require('chalk');
@@ -23,8 +24,7 @@ program
   .command('g <targetName>')
   .option('-c, --controller', '[G]enerate controller')
   .option('-s, --service', '[G]enerate a new service')
-  .option('-v, --view', '[G]enerate a new view')
-  .description('[G]enerate a new project/controller/service/view')
+  .description('[G]enerate a new project/controller/service')
   .action(generate);
   
 program.parse(process.argv);

@@ -3,6 +3,7 @@ import fs from 'fs';
 import ejs from 'ejs';
 import logSymbols from 'log-symbols';
 import { capitalize, TemplateUtils, log } from '../utils';
+import { V4MAPPED } from 'dns';
 
 const { ejsTemplates, templateMap, structure } = TemplateUtils;
 
@@ -48,15 +49,14 @@ const createFile = (name, filePath, component) => {
   if (component === 'controller' || component === 'service') {
     const tpl = ejs.render(templateMap[component], { name: capitalize(name) });
     write(filePath, tpl);
-  } else if (component === 'view') {
-    // generate view
   } else if (component === 'model') {
     // generate model
+    log(false, `${logSymbols['error']} Model generation not supported yet!`);
   }
 };
 
 export default (targetName, cmd) => {
-  if (!cmd.controller && !cmd.service && !cmd.view) {
+  if (!cmd.controller && !cmd.service) {
     // generate full project
     const destination = path.join(process.cwd(), targetName);
 
@@ -72,9 +72,6 @@ export default (targetName, cmd) => {
       // generate service
       const destination = path.join(process.cwd(), 'app/services', targetName + '.service.js');
       createFile(targetName, destination, 'service');
-    }
-    if (cmd.view) {
-      // generate view
     }
   }
 };

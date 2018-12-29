@@ -6,6 +6,9 @@ const app = new Application(__dirname, {
   // redis: new RedisClient
 });
 
+// replace with other view engines or remove it
+app.set('view engine', 'ejs');
+
 const server = app.listen(app.config.port);
 
 export default server;

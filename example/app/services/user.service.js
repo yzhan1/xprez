@@ -15,7 +15,7 @@ class UserService extends Service {
     console.log(`Redis URL: ${redis}`);
     console.log(`DB URL: ${config.db}`);
 
-    return { user: 'user1', posts };
+    return { user: `user${uid}`, posts };
   }
 }
 

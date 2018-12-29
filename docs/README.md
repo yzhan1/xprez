@@ -20,7 +20,7 @@ Heavily inspired by [Egg.js](https://github.com/eggjs/egg) and [Ruby on Rails](h
 + ✔︎ Ruby-on-Rails style directory structure
 + ✔︎ CLI program that generates new project templates
 
-## Getting Started
+## Quick Start
 
 To install:
 
@@ -53,17 +53,17 @@ Running test suite:
 $ npm test
 ```
 
-### Executable Commands
+## Executable Commands
 
 All commands need to be run in the project directory.
 
-#### View all options
+### View all options
 
 ```bash
 $ xprez -h
 ```
 
-#### Generate new project
+### Generate new project
 
 ```bash
 # myapp is the project name
@@ -92,7 +92,7 @@ myapp/
         ├── test.js        // test config vars
         └── production.js  // prod config vars
     ├── server.js          // App's entry point
-    └── routes.js 
+    └── routes.js
 └── test/
     ├── controllers/       // controllers test
     └── services/          // services test
@@ -101,14 +101,14 @@ myapp/
 Notice that you need to strictly follow
 this structure in order to make your app executable.
 
-#### To run the app server
+### To run the app server
 
 ```bash
 # in ./myapp
 $ xprez s
 ```
 
-#### Generate new controller/service
+### Generate new controller/service
 
 First `cd myapp` and run the following command
 
@@ -144,6 +144,8 @@ const app = new Application(__dirname, {
   redis: new RedisClient(),
   db: new SQLClient()
 });
+// you can choose to configure a view engine, or just send json as response
+app.set('view engine', 'ejs');
 
 const server = app.listen(app.config.port);
 
@@ -244,7 +246,7 @@ To extend a `Controller` or `Service`, all you need to do is add the constructor
 export default class UserService extends Service {
   constructor(app) {
     super(app); // must call super(app) to bind other references
-    this.logger = require('log4js').getLogger;
+    this.logger = require('log4js').getLogger();
   }
 }
 ```
@@ -265,6 +267,10 @@ describe('Application', () => {
   });
 
   afterEach(() => server.close());
+
+  it('should give expected result', () => {
+    // add assertions here
+  });
 });
 ```
 
@@ -275,7 +281,6 @@ Then you can access the `app` instance and test it using request libraries.
 + Model support for MySQL/PostgreSQL/MongoDB
 + Test support
 + Middleware support
-+ View templates using hbs and other templating languages
 
 ## License
 
