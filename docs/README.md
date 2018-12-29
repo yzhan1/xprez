@@ -1,6 +1,10 @@
-# Xprez.js
+<p align="center">
+  <img src="./logo.png">
+</p>
 
 ![npm downloads](https://img.shields.io/npm/dt/xprez.svg) ![npm](https://img.shields.io/npm/v/xprez.svg) [![Build Status](https://travis-ci.org/yzhan1/xprez.svg?branch=master&style=flat-square)](https://travis-ci.org/yzhan1/xprez) [![Known Vulnerabilities](https://snyk.io/test/github/yzhan1/xprez/badge.svg)](https://snyk.io/test/github/yzhan1/xprez) [![Maintainability](https://api.codeclimate.com/v1/badges/18a4dfac6bbc30040e34/maintainability)](https://codeclimate.com/github/yzhan1/xprez/maintainability)
+
+# Xprez.js
 
 ** Notification: This is still a Work in Progress **
 
@@ -227,7 +231,7 @@ export default class UserService extends Service {
 
 Service classes also have access to config/binds/other services. It's recommended to put all business logic inside service classes so they can be accessed by other controllers/services.
 
-## Extention
+## Extension
 
 Since the `Application` class is an Express app under the hood, you can still treat it like a normal Express.js app, which means you can add in models, middlewares, authentications and other plugins/libraries as you normally would.
 

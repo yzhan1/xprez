@@ -4,3 +4,4 @@ package-lock.json
 playground/
 sample.js
 testapp/
+.DS_Store
