@@ -119,7 +119,7 @@ This generates `myapp/app/controllers/user.controller.js`.
 
 ```bash
 # post is the service name, -s is for --service
-$ xprez g post -c
+$ xprez g post -s
 ```
 
 This generates `myapp/app/services/post.service.js`.
@@ -265,4 +265,4 @@ Then you can access the `app` instance and test it using request libraries.
 
 ## License
 
-[MIT](LICENSE.md)
+Xprez.js is released under the [MIT License](LICENSE.md).
