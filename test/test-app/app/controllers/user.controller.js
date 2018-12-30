@@ -18,7 +18,7 @@ class UserController extends Controller {
   }
 
   create(req, res) {
-
+    res.send('ok');
   }
 
   update(req, res) {
@@ -26,7 +26,7 @@ class UserController extends Controller {
   }
 
   destroy(req, res) {
-    
+    res.send('ok');
   }
 }
 

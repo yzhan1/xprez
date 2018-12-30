@@ -2,7 +2,7 @@
   <img src="./logo.png">
 </p>
 
-![npm downloads](https://img.shields.io/npm/dt/xprez.svg) ![npm](https://img.shields.io/npm/v/xprez.svg) [![Build Status](https://travis-ci.org/yzhan1/xprez.svg?branch=master&style=flat-square)](https://travis-ci.org/yzhan1/xprez) [![Known Vulnerabilities](https://snyk.io/test/github/yzhan1/xprez/badge.svg)](https://snyk.io/test/github/yzhan1/xprez) [![Maintainability](https://api.codeclimate.com/v1/badges/18a4dfac6bbc30040e34/maintainability)](https://codeclimate.com/github/yzhan1/xprez/maintainability) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/yzhan1/xprez/issues)
+![npm downloads](https://img.shields.io/npm/dt/xprez.svg) ![npm](https://img.shields.io/npm/v/xprez.svg) [![Build Status](https://travis-ci.org/yzhan1/xprez.svg?branch=master&style=flat-square)](https://travis-ci.org/yzhan1/xprez) [![Known Vulnerabilities](https://snyk.io/test/github/yzhan1/xprez/badge.svg)](https://snyk.io/test/github/yzhan1/xprez) [![Maintainability](https://api.codeclimate.com/v1/badges/18a4dfac6bbc30040e34/maintainability)](https://codeclimate.com/github/yzhan1/xprez/maintainability) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/yzhan1/xprez/issues) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 # [Xprez.js](https://yzhan1.github.io/xprez)
 
@@ -88,6 +88,8 @@ myapp/
         └── // place services here
     ├── views/
         └── index.ejs
+    ├── middlewares/
+        └── // place middlewares here
     ├── models/
     ├── utils/
         └── // place utilities here
@@ -153,10 +155,18 @@ This file includes the server initialization code.
 ```javascript
 import { App as Application } from 'xprez';
 
-const app = new Application(__dirname, {
+const app = new Application({
+  baseDir: __dirname,
+
+  // middlewares before request
+  beforeMiddlewares: [],
+  // middlewares after request
+  afterMiddlewares: [],
   // bind references in this hash
-  redis: new RedisClient(),
-  db: new SQLClient()
+  binds: {
+    redis: new RedisClient(),
+    db: new SQLClient()
+  }
 });
 // you can choose to configure a view engine, or just send json as response
 app.set('view engine', 'ejs');
@@ -255,6 +265,48 @@ export default class UserService extends Service {
 
 Service classes also have access to config/utils/binds/other services. It's recommended to put all business logic inside service classes so they can be accessed by other controllers/services.
 
+### app/middlewares
+
+Middlewares are some functions you would like to execute before or after each request. You can add middlewares inside `app/middlewares`.
+
+Below is a basic implementation of middleware:
+
+```javascript
+// app/middlewares/greet.js
+export default (req, res, next) => {
+  console.log('Hello!');
+  next();
+};
+```
+
+Then, in `config/server.js`, add this to either `beforeMiddlewares` or `afterMiddlewares` depending on whether you want it to
+run before or after request.
+
+```javascript
+const app = new Application({
+  // ...
+  beforeMiddlewares: [
+    // use only the file name before ".js"
+    'greet'
+  ],
+  afterMiddlewares: [
+    'greet'
+  ],
+  // ...
+});
+```
+
+If you have multiple middlewares `greet`, `prompt` and `farwell`, you can list them in the array in the based on the
+desired execution sequence. For example:
+
+```javascript
+beforeMiddlewares: [
+  'greet', 'prompt', 'farwell'
+]
+```
+
+Example can be found in `./example/config/server.js`.
+
 ### app/utils
 
 Utililities are mainly stateless helper functions that you want to use throughout your project. You can generate a utility class by doing `xprez g <utilityName> -u`.
@@ -315,8 +367,7 @@ to `package.json` as an npm script. It's also recommended to use [supertest](htt
 
 ## Future Improvements
 
-+ Middleware support
-+ Model support for MySQL/PostgreSQL/MongoDB
++ Database/Model support for MySQL/PostgreSQL/MongoDB
 
 ## License
 

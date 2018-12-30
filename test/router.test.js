@@ -13,7 +13,7 @@ describe('Router', () => {
   beforeEach(() => {
     app = express();
     app.routes = express.Router();
-    folderPath = path.join(__dirname, 'router-test');
+    app.baseDir = folderPath = path.join(__dirname, 'router-test');
     fs.mkdirSync(folderPath);
 
     routerPath = path.join(folderPath, 'routes.js');
@@ -29,18 +29,18 @@ describe('Router', () => {
   afterEach(() => deleteFolderRecursive(folderPath));
 
   it('should have two routes', () => {
-    const routes = router(app, folderPath);
+    const routes = router(app);
     assert.equal(routes.stack.length, 2);
   });
 
   it('should have /hello', () => {
-    const routes = router(app, folderPath);
+    const routes = router(app);
     const helloRoute = routes.stack.filter((layer) => layer.route.path === '/hello');
     assert.equal(helloRoute.length, 1);
   });
 
   it('should have /create', () => {
-    const routes = router(app, folderPath);
+    const routes = router(app);
     const createRoute = routes.stack.filter((layer) => layer.route.path === '/create');
     assert.equal(createRoute.length, 1);
   });

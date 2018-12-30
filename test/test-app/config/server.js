@@ -1,12 +1,22 @@
 import { App as Application } from '../../../';
 
-const app = new Application(__dirname, {
+const app = new Application({
+  baseDir: __dirname,
+
+  beforeMiddlewares: [
+    
+  ],
+  afterMiddlewares: [
+
+  ],
+
   // bind references in this hash
   // `config`, `controllers` and `services` are reserved keywords
-  // redis: new RedisClient
+  binds: {
+    redis: 'RedisClient'
+  }
 });
 
-// replace with other view engines or remove it
 app.set('view engine', 'ejs');
 
 if (app.env !== 'test') {

@@ -1,6 +1,14 @@
 import { Service } from '../../..';
 
 class PostService extends Service {
+  constructor(app) {
+    super(app);
+    this.posts = [
+      'Post 1',
+      'Post 2'
+    ];
+  }
+
   getPostsForUser(uid) {
     console.log(`Fetching posts for user: uid=${uid}`);
 
@@ -11,10 +19,11 @@ class PostService extends Service {
   }
 
   findAll() {
-    return [
-      'Post 1',
-      'Post 2'
-    ];
+    return this.posts;
+  }
+
+  save(post) {
+    this.posts.push(post);
   }
 }
 

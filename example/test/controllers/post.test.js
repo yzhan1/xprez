@@ -15,4 +15,41 @@ describe('post.controller.js', () => {
       .get('/posts')
       .expect(200, done);
   });
+
+  it('should return 200 for POST /posts/create', (done) => {
+    request(app)
+      .post('/posts/create')
+      .send({ content: 'Test content' })
+      .set('Accept', 'application/json')
+      .expect(302)
+      .end((err, _) => {
+        if (err) return done(err);
+        done();
+      });
+  });
+
+  it('should return 200 for PUT /posts/:id/update', (done) => {
+    request(app)
+      .put('/posts/1/update')
+      .send({
+        id: 1,
+        content: 'Another test content'
+      })
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end((err, _) => {
+        if (err) return done(err);
+        done();
+      });
+  });
+
+  it('should return 200 for DELETE /posts/:id', (done) => {
+    request(app)
+      .delete('/posts/1')
+      .expect(200)
+      .end(function(err, res) {
+        if (err) return done(err);
+        done();
+      });
+  });
 });

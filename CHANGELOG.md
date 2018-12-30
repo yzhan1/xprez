@@ -54,3 +54,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 + Modified `server.js` template to not run app server when testing
+
+## [2.2.5] - 2018-12-30
+
+### Added
+
++ Middlewares support. User can define middlewares that will be used before/after requests
++ Documentation on middlewares
++ Added `bodyParser` for request data parsing
+
+### Changed
+
++ Fixed bugs for `POST` and `PUT` requests
++ Refactored middleware setup for the framework

@@ -22,7 +22,7 @@ class PostController extends Controller {
   }
 
   update(req, res) {
-
+    res.send('ok');
   }
 
   destroy(req, res) {

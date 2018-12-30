@@ -1,6 +1,7 @@
 require = require('esm')(module);
 
 const assert = require('assert');
+const request = require('supertest');
 
 describe('Application', () => {
   let app;
@@ -39,5 +40,39 @@ describe('Application', () => {
   it('should bind reference only', () => {
     assert.strictEqual(app.services, app.controllers.user.services);
     assert.strictEqual(app.services, app.services.user.services);
+  });
+
+  it('should respond to GET', (done) => {
+    request(app).get('/hello').expect(200, done);
+  });
+
+  it('should respond to POST', (done) => {
+    request(app)
+      .post('/users/create')
+      .expect(200)
+      .end((err, _) => {
+        if (err) return done(err);
+        done();
+      });
+  });
+
+  it('should respond to PUT', (done) => {
+    request(app)
+      .put('/posts/1/update')
+      .expect(200)
+      .end((err, _) => {
+        if (err) return done(err);
+        done();
+      });
+  });
+
+  it('should respond to DELETE', (done) => {
+    request(app)
+      .delete('/users/1')
+      .expect(200)
+      .end(function(err, res) {
+        if (err) return done(err);
+        done();
+      });
   });
 });

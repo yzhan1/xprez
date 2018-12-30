@@ -1,9 +1,21 @@
 import { App as Application } from '../..';
 
-const app = new Application(__dirname, {
+const app = new Application({
+  baseDir: __dirname,
+
+  beforeMiddlewares: [
+    'greet',
+    'prompt'
+  ],
+  afterMiddlewares: [
+    'farwell'
+  ],
+
   // bind references in this hash
   // `config`, `controllers` and `services` are reserved keywords
-  redis: 'RedisClient'
+  binds: {
+    redis: 'RedisClient'
+  }
 });
 
 app.set('view engine', 'ejs');

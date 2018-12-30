@@ -12,7 +12,8 @@ const structure = [
       { public: [] },
       { services: [] },
       { views: ['index.ejs'] },
-      { utils: [] }
+      { utils: [] },
+      { middlewares: [] }
     ]
   },
   {

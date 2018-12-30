@@ -2,3 +2,8 @@
 <% for (let i = 0; i < posts.length; i++) { %>
   <li><%= posts[i] %></li>
 <% } %>
+
+<form action="/posts/create" method="POST">
+  Content: <input type="text" name="content"><br>
+  <input type="submit" value="Submit">
+</form>
