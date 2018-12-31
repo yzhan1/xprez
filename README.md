@@ -2,7 +2,7 @@
   <img src="./logo.png">
 </p>
 
-![npm downloads](https://img.shields.io/npm/dt/xprez.svg) ![npm](https://img.shields.io/npm/v/xprez.svg) [![Build Status](https://travis-ci.org/yzhan1/xprez.svg?branch=master&style=flat-square)](https://travis-ci.org/yzhan1/xprez) [![Known Vulnerabilities](https://snyk.io/test/github/yzhan1/xprez/badge.svg)](https://snyk.io/test/github/yzhan1/xprez) [![Maintainability](https://api.codeclimate.com/v1/badges/18a4dfac6bbc30040e34/maintainability)](https://codeclimate.com/github/yzhan1/xprez/maintainability) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/yzhan1/xprez/issues) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+![npm downloads](https://img.shields.io/npm/dt/xprez.svg?style=flat-square) ![npm](https://img.shields.io/npm/v/xprez.svg?style=flat-square) [![Build Status](https://img.shields.io/travis/yzhan1/xprez/master.svg?style=flat-square)](https://travis-ci.org/yzhan1/xprez) [![Maintainability](https://img.shields.io/codeclimate/maintainability/yzhan1/xprez.svg?style=flat-square)](https://codeclimate.com/github/yzhan1/xprez/maintainability) [![Known Vulnerabilities](https://snyk.io/test/github/yzhan1/xprez/badge.svg?style=flat-square)](https://snyk.io/test/github/yzhan1/xprez) ![License](https://img.shields.io/npm/l/xprez.svg?style=flat-square) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/yzhan1/xprez/issues) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 # [Xprez.js](https://yzhan1.github.io/xprez)
 
@@ -295,6 +295,8 @@ const app = new Application({
   // ...
 });
 ```
+
+Or you can access your middlewares in `config/routes.js` by using `app.middlewares.greet`.
 
 If you have multiple middlewares `greet`, `prompt` and `farwell`, you can list them in the array in the based on the
 desired execution sequence. For example:
