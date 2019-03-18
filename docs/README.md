@@ -19,7 +19,7 @@ Heavily inspired by [Egg.js](https://github.com/eggjs/egg) and [Ruby on Rails](h
 ## Features
 
 + ✔︎ Model-View-Controller pattern for your web project
-+ ✔︎ Load routes/controllers/service automatically for you
++ ✔︎ Load routes/controllers/services/middlewares automatically for you
 + ✔︎ Access services classes easily
 + ✔︎ Ruby-on-Rails style directory structure
 + ✔︎ CLI program that generates new project templates
