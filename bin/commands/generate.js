@@ -54,9 +54,9 @@ const createFolder = (structure, currPath, appName) => {
     } else {
       // create a new folder
       const folderName = Object.keys(item)[0];
-      const destination = path.join(currPath, folderName);
-      fs.mkdirSync(destination);
-      createFolder(item[folderName], destination, appName);
+      const dest = path.join(currPath, folderName);
+      fs.mkdirSync(dest);
+      createFolder(item[folderName], dest, appName);
     }
   });
 };
@@ -69,13 +69,13 @@ const createFolder = (structure, currPath, appName) => {
  */
 const createFile = (name, component) => {
   const { folder, suffix } = filePathMapping[component];
-  const destination = path.join(process.cwd(), folder, `${name}${suffix}`);
+  const dest = path.join(process.cwd(), folder, `${name}${suffix}`);
 
   let tpl = templateMap[component];
   if (ejsTemplates.includes(component)) {
-    tpl = ejs.render(templateMap[component], { name: capitalize(name) });
+    tpl = ejs.render(tpl, { name: capitalize(name) });
   }
-  write(destination, tpl);
+  write(dest, tpl);
 };
 
 /**
