@@ -1,5 +1,5 @@
 export default (app) => {
   const { routes, controllers } = app;
 
-  routes.get('/hello', (...args) => controllers.hello.index(...args));
+  routes.get('/hello', controllers.application.index);
 };

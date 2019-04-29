@@ -3,7 +3,7 @@ require = require('esm')(module);
 const request = require('supertest');
 const app = require('../../config/server').default;
 
-describe('hello.controller.js', () => {
+describe('application.controller.js', () => {
   it('should return 200 for /hello', (done) => {
     request(app)
       .get('/hello')

@@ -1,6 +1,6 @@
-import { Controller } from '../../..';
+import ApplicationController from './application.controller';
 
-class UserController extends Controller {
+class UserController extends ApplicationController {
   index(req, res) {
 
   }

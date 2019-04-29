@@ -89,10 +89,10 @@ const allOptions = ['controller', 'service', 'utility'];
 export default (targetName, cmd) => {
   if (!cmd.controller && !cmd.service && !cmd.utility) {
     // generate full project
-    const destination = path.join(process.cwd(), targetName);
+    const dest = path.join(process.cwd(), targetName);
 
-    fs.mkdirSync(destination);
-    createFolder(structure, destination, targetName);
+    fs.mkdirSync(dest);
+    createFolder(structure, dest, targetName);
   } else {
     // generate individual templates
     allOptions.forEach((option) => {

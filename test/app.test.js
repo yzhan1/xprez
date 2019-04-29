@@ -6,7 +6,7 @@ const request = require('supertest');
 describe('Application', () => {
   let app;
   const binds = ['controllers', 'services', 'routes', 'config', 'utils'];
-  const controllers = ['hello', 'user', 'post'];
+  const controllers = ['application', 'user', 'post'];
   const services = ['user', 'post'];
   const utils = ['math'];
 
@@ -21,6 +21,10 @@ describe('Application', () => {
   it('should bind all controllers', () => {
     controllers.forEach((controller) => 
       assert.notStrictEqual(app.controllers[controller]), undefined);
+  });
+
+  it('should bind references inherited from ApplicationController', () => {
+    assert.strictEqual(app.controllers['application']['rpcClient'], app.controllers['user']['rpcClient']);
   });
 
   it('should bind all services', () => {

@@ -57,7 +57,7 @@ const templateMap = {
   '.gitignore': loadTemplate('gitignore'),
   'package.json': loadTemplate('package.json.ejs'),
   'README.md': loadTemplate('README.md.ejs'),
-  'hello.controller.js': loadTemplate('app/hello.controller.js'),
+  'application.controller.js': loadTemplate('app/application.controller.js'),
   'index.ejs': loadTemplate('app/views/index.ejs')
 };
 

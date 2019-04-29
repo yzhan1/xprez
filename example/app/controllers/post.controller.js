@@ -1,9 +1,10 @@
-import { Controller } from '../../..';
+import ApplicationController from './application.controller';
 
-class PostController extends Controller {
+class PostController extends ApplicationController {
   index(req, res) {
+    // access your controller binds (extended from application.controller.js)
+    console.log(this.rpcClient);
     const posts = this.services.post.findAll();
-
     res.render('posts/index', { posts });
   }
 
@@ -12,14 +13,6 @@ class PostController extends Controller {
       id: req.params.id,
       post: 'This is post content'
     });
-  }
-
-  new(req, res) {
-
-  }
-
-  edit(req, res) {
-
   }
 
   create(req, res) {

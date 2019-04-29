@@ -1,20 +1,16 @@
-import { Controller } from '../../../../';
+import ApplicationController from './application.controller';
 
-class UserController extends Controller {
+class UserController extends ApplicationController {
   index(req, res) {
-
   }
 
   show(req, res) {
-    
   }
 
   new(req, res) {
-
   }
 
   edit(req, res) {
-
   }
 
   create(req, res) {
@@ -22,7 +18,6 @@ class UserController extends Controller {
   }
 
   update(req, res) {
-
   }
 
   destroy(req, res) {
