@@ -1,11 +1,10 @@
-require = require('esm')(module);
+import router from '../lib/middlewares/router';
+import deleteFolderRecursive from './test-util';
 
-const router = require('../lib/middlewares/router').default;
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
-const { deleteFolderRecursive } = require('./test-util');
 
 describe('Router', () => {
   let folderPath, routerPath, app;

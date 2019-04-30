@@ -1,6 +1,5 @@
-require = require('esm')(module);
+import BaseClass from '../lib/modules/base-class';
 
-const BaseClass = require('../lib/modules/base-class').default;
 const express = require('express');
 const assert = require('assert');
 
@@ -12,8 +11,8 @@ describe('Controller and Service', () => {
     app.config = { lang: 'english' };
     app.env = 'TEST';
     app.services = { user: 'userService', post: 'postService' };
-    app.utils = { 
-      math: { addOne: (x) => x + 1 }
+    app.utils = {
+      math: { addOne: x => x + 1 }
     };
     app.userBindings = { testVar: 'test' };
   });
@@ -29,7 +28,7 @@ describe('Controller and Service', () => {
 
   it('should include all services', () => {
     const baseClass = new BaseClass(app);
-    ['user', 'post'].forEach((service) =>
+    ['user', 'post'].forEach(service =>
       assert.notDeepEqual(baseClass.services[service], undefined));
   });
 

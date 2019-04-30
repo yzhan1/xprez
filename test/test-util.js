@@ -12,6 +12,4 @@ const deleteFolderRecursive = (path) => {
   }
 };
 
-export {
-  deleteFolderRecursive
-};
+export default deleteFolderRecursive;

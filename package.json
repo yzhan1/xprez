@@ -3,7 +3,7 @@
   "version": "2.3.0",
   "description": "A minimal web framework (built on top of Express.js) that separates router, controllers and services.",
   "scripts": {
-    "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha ./test/*.test.js"
+    "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha ./test/*.test.js --require esm"
   },
   "author": "Yaoming Zhan",
   "bin": {

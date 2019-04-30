@@ -7,7 +7,7 @@ import path from 'path';
 const structure = [
   {
     app: [
-      { controllers: ['hello.controller.js'] },
+      { controllers: ['application.controller.js'] },
       { models: [] },
       { public: [] },
       { services: [] },
