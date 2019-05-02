@@ -82,7 +82,7 @@ myapp/
 ├── package.json
 ├── app/
     ├── controllers/
-        ├── hello.controller.js
+        ├── application.controller.js
         └── // place controllers here
     ├── services/
         └── // place services here
@@ -100,6 +100,7 @@ myapp/
         ├── test.js        // test config vars
         └── production.js  // prod config vars
     ├── server.js          // App's entry point
+    ├── application.js     // App definition
     └── routes.js
 └── test/
     ├── controllers/       // controller tests
@@ -148,9 +149,9 @@ All generate commands need to be executed in the root of the project folder, oth
 
 The main components are inside `app/` and `config/` folders. App folder contains key components including controllers, services, views and models. Config folder includes files with config variables, routes declaration and server entry file.
 
-### config/server.js
+### config/application.js
 
-This file includes the server initialization code.
+This file includes the application initialization code.
 
 ```javascript
 import { App as Application } from 'xprez';
@@ -171,15 +172,22 @@ const app = new Application({
 // you can choose to configure a view engine, or just send json as response
 app.set('view engine', 'ejs');
 
-// don't run the server when testing
-if (app.env !== 'test') {
-  app.listen(app.config.port);
-}
 // expose app for testing
 export default app;
 ```
 
 You can pass in a hash to the constructor to bind config/database connections or other stuffs to the app object. They can be used in controller and service classes later.
+
+### config/server.js
+
+Define server startup logic here.
+
+```javascript
+import app from './application';
+// you can use cluster library to start the app here
+app.listen(app.config.port);
+export default app;
+```
 
 ### config/routes.js
 
@@ -191,7 +199,7 @@ A basic router looks like:
 // config/routes.js
 export default (app) => {
   const { routes, controllers } = app;
-  routes.get('/users/:id', (...args) => controllers.user.show(...args));
+  routes.get('/users/:id', controllers.user.show);
 };
 ```
 
@@ -199,9 +207,9 @@ Then we need a basic implementation of `UserController`.
 
 ```javascript
 // app/controllers/user.controller.js
-import { Controller } from 'xprez';
+import ApplicationController from './application.controller';
 
-export default class UserController extends Controller {
+export default class UserController extends ApplicationController {
   show(req, res) {
     res.send('Hello');
   }
@@ -225,9 +233,10 @@ A basic controller implementation looks like this:
 
 ```javascript
 // app/controllers/user.controller.js
-import { Controller } from 'xprez';
+import ApplicationController from './application.controller';
 
-export default class UserController extends Controller {
+// extend from ApplicationController to get binds defined for controller layer only
+export default class UserController extends ApplicationController {
   async show(req, res) {
     const uid = req.params.id;
     const user = await this.services.user.findById(uid);
@@ -239,7 +248,7 @@ export default class UserController extends Controller {
 }
 ```
 
-Notice that the controller object has access to our services, utils, configuration and the custom binds we declared in `config/server.js`.
+Notice that the controller object has access to our services, utils, configuration and the custom binds we declared in `config/application.js`.
 
 ### app/services
 
@@ -257,8 +266,8 @@ export default class UserService extends Service {
     const two = this.utils.math.addOne(1);
     const user = await this.db.findById(uid);
     user.language = this.config.language;
-    this.services.post.save(user.posts);
-    return user;
+    const posts = this.services.post.get(uid);
+    return { user, posts };
   }
 }
 ```
@@ -279,7 +288,7 @@ export default (req, res, next) => {
 };
 ```
 
-Then, in `config/server.js`, add this to either `beforeMiddlewares` or `afterMiddlewares` depending on whether you want it to
+Then, in `config/application.js`, add this to either `beforeMiddlewares` or `afterMiddlewares` depending on whether you want it to
 run before or after request.
 
 ```javascript
@@ -307,7 +316,7 @@ beforeMiddlewares: [
 ]
 ```
 
-Example can be found in `./example/config/server.js`.
+Example can be found in `./example/config/application.js`.
 
 ### app/utils
 
@@ -351,7 +360,7 @@ You can test the application like how you test an Express app. A starting test s
 require = require('esm')(module);
 
 const request = require('supertest');
-const app = require('path/to/config/server.js').default;
+const app = require('path/to/config/application.js').default;
 
 describe('Test user.controller.js', () => {
   it('should return 200', (done) => {

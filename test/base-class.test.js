@@ -1,7 +1,7 @@
 import BaseClass from '../lib/modules/base-class';
 
-const express = require('express');
-const assert = require('assert');
+import express from 'express';
+import assert from 'assert';
 
 describe('Controller and Service', () => {
   let app;

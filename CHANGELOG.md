@@ -67,3 +67,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 + Fixed bugs for `POST` and `PUT` requests
 + Refactored middleware setup for the framework
+
+## [2.3.0] - 2019-05-01
+
+### Changed
+
++ Controller and Service instances now have `this` reference by default
++ Separated application and server startup logic in different files
++ Controller now extend from an `ApplicationController` class

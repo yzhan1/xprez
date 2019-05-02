@@ -1,10 +1,10 @@
 import router from '../lib/middlewares/router';
-import deleteFolderRecursive from './test-util';
+import rm from './test-util';
 
-const express = require('express');
-const fs = require('fs');
-const path = require('path');
-const assert = require('assert');
+import express from 'express';
+import fs from 'fs';
+import path from 'path';
+import assert from 'assert';
 
 describe('Router', () => {
   let folderPath, routerPath, app;
@@ -25,7 +25,7 @@ describe('Router', () => {
     `);
   });
 
-  afterEach(() => deleteFolderRecursive(folderPath));
+  afterEach(() => rm(folderPath));
 
   it('should have two routes', () => {
     const routes = router(app);

@@ -1,5 +1,5 @@
-const assert = require('assert');
-const request = require('supertest');
+import assert from 'assert';
+import request from 'supertest';
 
 describe('Application', () => {
   let app;
@@ -9,7 +9,7 @@ describe('Application', () => {
   const utils = ['math'];
 
   beforeEach(() => {
-    app = require('./test-app/config/server').default;
+    app = require('./test-app/config/application').default;
   });
 
   it('should have all binds', () => {
