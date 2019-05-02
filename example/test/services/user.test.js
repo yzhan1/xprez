@@ -1,7 +1,7 @@
 require = require('esm')(module);
 
 const assert = require('assert');
-const app = require('../../config/server').default;
+const app = require('../../config/application').default;
 const userService = app.services.user;
 
 describe('user.service.js', () => {
