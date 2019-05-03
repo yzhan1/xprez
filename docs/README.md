@@ -6,7 +6,7 @@
 
 # [Xprez.js](https://yzhan1.github.io/xprez)
 
-** Notification: This is still a Work in Progress **
+__Notification: This is still a Work in Progress__
 
 A minimal opinionated ES6 web framework with CLI (built on top of [Express.js](https://github.com/expressjs/express/)) that separates router, controllers and services.
 
