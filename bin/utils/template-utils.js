@@ -42,7 +42,7 @@ const structure = [
   'README.md'
 ];
 
-const loadTemplate = (name) =>
+const loadTemplate = name =>
   fs.readFileSync(path.join(__dirname, '..', 'templates', name), 'utf-8');
 
 const templateMap = {

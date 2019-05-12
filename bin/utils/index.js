@@ -8,9 +8,9 @@ const log = (success, msg) => {
     : console.log(chalk.red.bold(msg));
 };
 
-const marks = (flag) => `${logSymbols[flag]}${logSymbols[flag]}${logSymbols[flag]}`;
+const marks = flag => `${logSymbols[flag]}${logSymbols[flag]}${logSymbols[flag]}`;
 
-const capitalize = (str) => `${str[0].toUpperCase()}${str.substr(1)}`;
+const capitalize = str => `${str[0].toUpperCase()}${str.substr(1)}`;
 
 export {
   log, marks, capitalize, TemplateUtils

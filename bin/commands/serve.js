@@ -1,7 +1,7 @@
 import logSymbols from 'log-symbols';
 import { log, marks } from '../utils';
 
-export default (path) => {
+export default path => {
   let message, success;
 
   try {

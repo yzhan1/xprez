@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-const rm = (path) => {
+const rm = path => {
   if (fs.existsSync(path)) {
     fs.readdirSync(path).forEach((file, _) => {
       const currPath = `${path}/${file}`;

@@ -44,7 +44,7 @@ const createFolder = (structure, currPath, appName) => {
     return;
   }
 
-  structure.forEach((item) => {
+  structure.forEach(item => {
     if (typeof item === 'string') {
       let tpl = templateMap[item];
       if (ejsTemplates.includes(item)) {
@@ -95,7 +95,7 @@ export default (targetName, cmd) => {
     createFolder(structure, dest, targetName);
   } else {
     // generate individual templates
-    allOptions.forEach((option) => {
+    allOptions.forEach(option => {
       if (cmd[option]) {
         createFile(targetName, option);
       }

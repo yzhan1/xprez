@@ -34,13 +34,13 @@ describe('Router', () => {
 
   it('should have /hello', () => {
     const routes = router(app);
-    const helloRoute = routes.stack.filter((layer) => layer.route.path === '/hello');
+    const helloRoute = routes.stack.filter(layer => layer.route.path === '/hello');
     assert.equal(helloRoute.length, 1);
   });
 
   it('should have /create', () => {
     const routes = router(app);
-    const createRoute = routes.stack.filter((layer) => layer.route.path === '/create');
+    const createRoute = routes.stack.filter(layer => layer.route.path === '/create');
     assert.equal(createRoute.length, 1);
   });
 });

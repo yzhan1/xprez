@@ -197,7 +197,7 @@ A basic router looks like:
 
 ```javascript
 // config/routes.js
-export default (app) => {
+export default app => {
   const { routes, controllers } = app;
   routes.get('/users/:id', controllers.user.show);
 };
@@ -363,7 +363,7 @@ const request = require('supertest');
 const app = require('path/to/config/application.js').default;
 
 describe('Test user.controller.js', () => {
-  it('should return 200', (done) => {
+  it('should return 200', done => {
     request(app)
       .get('/users/1')
       .expect(200, done);
